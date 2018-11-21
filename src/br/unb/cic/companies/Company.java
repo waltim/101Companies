@@ -2,6 +2,8 @@ package br.unb.cic.companies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Company implements Unit {
 
@@ -25,20 +27,20 @@ public class Company implements Unit {
 		departments.add(d);
 	}
 
-	public String NameOfOfficeForSpecificDepartment(Department department, String office) {
-		return department.getEmployees().stream().filter(e -> equals(office)).map(e -> e.getName()).toString();
-//		String nameOffice = "";
+	public Employee managerForSpecificDepartment(Department department) {
+		return department.getEmployees().stream().filter(e -> e.getOffice().equals("manager")).findFirst().orElse(null);
+//		Employee manager = null;
 //		for (Department d : departments) {
 //			if (d.equals(department)) {
 //				for (Employee e : d.getEmployees()) {
-//					if (e.getOffice() == office) {
-//						nameOffice = e.getName();
+//					if (e.getOffice() == "manager") {
+//						manager = e;
 //						break;
 //					}
 //				}
 //			}
 //		}
-//		return nameOffice;
+//		return manager;
 	}
 
 	public void cutSalaries(double percent) {
