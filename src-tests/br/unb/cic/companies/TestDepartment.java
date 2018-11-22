@@ -25,9 +25,7 @@ public class TestDepartment {
 		dep2.addEmployee(emp);
 		dep2.addEmployee(emp2);
 		dep2.addEmployee(emp3);
-		
-		System.out.println("Number of employees is: "+dep2.employeeWithHighSalaries(2500.0).size());
-		
+				
 		assertEquals(2, dep2.employeeWithHighSalaries(2500.0).size());
 		
 	}

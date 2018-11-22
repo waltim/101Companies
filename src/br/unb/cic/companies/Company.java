@@ -28,7 +28,8 @@ public class Company implements Unit {
 	}
 
 	public Employee managerForSpecificDepartment(Department department) {
-		return department.getEmployees().stream().filter(e -> e.getOffice().equals("manager")).findFirst().orElse(null);
+		Department dep = departments.stream().filter(d -> d.equals(department)).findFirst().orElse(null);
+		return dep.getEmployees().stream().filter(e -> e.getOffice().equals("manager")).findFirst().orElse(null);
 //		Employee manager = null;
 //		for (Department d : departments) {
 //			if (d.equals(department)) {
