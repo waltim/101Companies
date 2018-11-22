@@ -18,5 +18,16 @@ class TestEmployee {
 		
 		assertEquals(115.0, emp.totalSalary()); 
 	}
+	
+	@Test
+	public void testCutSalaries() {
+		Company com = new Company("name");
+		Department dep = new Department("UNB",com);
+		Employee emp = new Employee("Walter", 100.0,  20.0, "gerente",dep);
+		
+		emp.cutSalaries(5.0);
+		
+		assertEquals(115.0, emp.totalSalary());
+	}
 
 }

@@ -49,13 +49,11 @@ public class Company implements Unit {
 //		for(Department d: departments) {
 //			d.cutSalaries(percent);
 //		}
-
 	}
 
 	public double totalSalary() {
+		double total = departments.stream().map(e -> e.totalSalary()).reduce(Double::sum).get();
 //		double total = 0;
-		double total = departments.stream().map(d -> d.totalSalary()).reduce(Double::sum).get();
-
 //		for (Department d : departments) {
 //			total += d.totalSalary();
 //		}

@@ -25,7 +25,7 @@ public class Department implements Unit {
 	public void addEmployee(Employee e) {
 		employees.add(e);
 	}
-	
+
 	public List<Employee> getEmployees() {
 		return employees;
 	}
@@ -34,7 +34,7 @@ public class Department implements Unit {
 		employees.stream().forEach(e -> e.cutSalaries(percent));
 		subdepts.stream().forEach(d -> cutSalaries(percent));
 //		for(Employee e: employees) {
-//			e.cutSalary(percent);
+//			e.cutSalaries(percent);
 //		}
 //		
 //		for(Department d: subdepts) {
@@ -55,18 +55,19 @@ public class Department implements Unit {
 	}
 
 	public double totalSalary() {
-		double total = employees.stream().map(e -> e.totalSalary()).reduce(Double::sum).get();
-
-		total += subdepts.stream().map(d -> d.totalSalary()).reduce(Double::sum).get();
-
+		
+		double sum = 0;
+		double total = employees.stream().map(e -> e.totalSalary()).reduce(sum,Double::sum);
+		total += subdepts.stream().map(d -> d.totalSalary()).reduce(sum,Double::sum);
+//		double total = 0;
 //		for(Employee e: employees) {
-//			total += e.total();
+//			total += e.totalSalary();
 //		}
 //		
 //		for(Department d: subdepts) {
-//			total += d.totalSalaries();
+//			total += d.totalSalary();
 //		}
-
+//		System.out.println(total);
 		return total;
 	}
 }
