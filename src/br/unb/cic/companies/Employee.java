@@ -42,5 +42,4 @@ public class Employee implements Unit{
 	public double totalSalary() {
 		return salary + bonus; 
 	}
-
 }

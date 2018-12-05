@@ -55,7 +55,6 @@ public class Department implements Unit {
 	}
 
 	public double totalSalary() {
-		
 		double sum = 0;
 		double total = employees.stream().map(e -> e.totalSalary()).reduce(sum,Double::sum);
 		total += subdepts.stream().map(d -> d.totalSalary()).reduce(sum,Double::sum);
@@ -70,4 +69,5 @@ public class Department implements Unit {
 //		System.out.println(total);
 		return total;
 	}
+
 }
