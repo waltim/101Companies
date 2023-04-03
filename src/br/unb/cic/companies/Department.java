@@ -30,43 +30,20 @@ public class Department implements Unit {
 		return employees;
 	}
 
-	public void cutSalaries(double percent) {
-		employees.stream().forEach(e -> e.cutSalaries(percent));
-		subdepts.stream().forEach(d -> cutSalaries(percent));
-//		for(Employee e: employees) {
-//			e.cutSalaries(percent);
-//		}
-//		
-//		for(Department d: subdepts) {
-//			d.cutSalaries(percent);
-//		}
-	}
 
-	public List<Employee> employeeWithHighSalaries(double salary) {
-		return employees.stream().filter(e -> e.getSalary() > salary).collect(Collectors.toList());
-//		
-//		List<Employee> res = new ArrayList<>();
-//		for(Employee e: employees) {
-//			if(e.getSalary() > salary) {
-//				res.add(e);
-//			}
-//		}
-//		return res;
+	public void cutSalaries(double percent) {
+		for(Employee e: employees) {
+			e.cutSalaries(percent);
+		}
+
+		for(Department d: subdepts) {
+			d.cutSalaries(percent);
+		}
 	}
 
 	public double totalSalary() {
-		double sum = 0;
-		double total = employees.stream().map(e -> e.totalSalary()).reduce(sum,Double::sum);
-		total += subdepts.stream().map(d -> d.totalSalary()).reduce(sum,Double::sum);
-//		double total = 0;
-//		for(Employee e: employees) {
-//			total += e.totalSalary();
-//		}
-//		
-//		for(Department d: subdepts) {
-//			total += d.totalSalary();
-//		}
-//		System.out.println(total);
+		double total = employees.stream().mapToDouble(Employee::totalSalary).sum();
+		total += subdepts.stream().mapToDouble(Department::totalSalary).sum();
 		return total;
 	}
 
