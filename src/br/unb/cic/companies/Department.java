@@ -2,7 +2,6 @@ package br.unb.cic.companies;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Department implements Unit {
 
